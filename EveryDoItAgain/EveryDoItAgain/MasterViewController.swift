@@ -25,12 +25,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     let defaultTitle = "Title Goes Here"
     let defaultDescription = "Description Goes Here"
     let defualtPriorityNumber = 0
-    let defaultSwitch = false
+  
+    
     
     userDefualts.set(defaultTitle, forKey:"title")
     userDefualts.set(defaultDescription, forKey: "todoDescription")
     userDefualts.set(defualtPriorityNumber, forKey: "priorityNumber")
-    userDefualts.set(defaultSwitch, forKey: "completed")
+
     
     // Do any additional setup after loading the view, typically from a nib.
     navigationItem.leftBarButtonItem = editButtonItem
@@ -74,13 +75,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     let saveAction = UIAlertAction(title: "Save", style: .default) {
       [unowned self] action in
 
-
+      newToDo.isCompleted = false
       guard let titleToSave = alert.textFields?[0].text,
             let descriptionToSave = alert.textFields?[2].text,
             let priorityToSave = Int32((alert.textFields?[1].text)!) else {
           return;
       }
-      self.save(title: titleToSave, toDoDescription: descriptionToSave, priorityNumber: priorityToSave)
+      self.save(title: titleToSave, toDoDescription: descriptionToSave, priorityNumber: priorityToSave, completedSwitch: false)
       self.tableView.reloadData()
     }
     
@@ -89,6 +90,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     let defaultTitle = userDefualts.object(forKey: "title") as! String
     let defaultDescription = userDefualts.object(forKey: "todoDescription") as! String
     let defaultPriorityNumber = userDefualts.object(forKey: "priorityNumber") as! Int
+ 
     
     alert.addTextField{ (textField) in
       textField.text = defaultTitle
@@ -107,6 +109,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // Save the context.
     do {
         try context.save()
+        
   
     } catch {
         let nserror = error as NSError
@@ -115,7 +118,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   }
   
   
-  func save(title: String, toDoDescription: String, priorityNumber: Int32) {
+  func save(title: String, toDoDescription: String, priorityNumber: Int32, completedSwitch: Bool) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
       return
     }
@@ -128,6 +131,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     toDo.setValue(title, forKey: "title")
     toDo.setValue(priorityNumber, forKey: "priorityNumber")
     toDo.setValue(toDoDescription, forKey: "todoDescription")
+    
+    toDo.setValue(completedSwitch, forKey: "isCompleted")
+    
 
     do {
       try managedContext.save()
@@ -137,7 +143,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
       print("error save title: string")
     }
   }
-  
   
 
   // MARK: - Segues
@@ -197,8 +202,14 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   }
 
   func configureCell(_ cell: UITableViewCell, withTodo toDo: ToDo) {
-      cell.textLabel!.text = toDo.title!.description
+    
+    if toDo.isCompleted == true {
+      cell.textLabel?.textColor = UIColor.green
 
+      
+    }
+      cell.textLabel!.text = toDo.title!.description
+    
   }
 
   // MARK: - Fetched results controller

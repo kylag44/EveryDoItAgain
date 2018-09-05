@@ -14,6 +14,9 @@ class DetailViewController: UIViewController {
   @IBOutlet weak var numLabel: UILabel!
   @IBOutlet weak var titleLabel: UILabel!
   
+  @IBOutlet weak var completedSwitch: UISwitch!
+  
+  
   func configureView() {
     // Update the user interface for the detail item.
     if let detail = detailItem {
@@ -29,9 +32,34 @@ class DetailViewController: UIViewController {
     }
   }
 
+  @IBAction func switchPressed(_ sender: UISwitch) {
+    var switchValueBool = sender.isOn
+    if sender.isOn == true {
+      detailItem?.isCompleted = true
+    }
+    ///getting app delegate
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+      return
+    }
+    ///which gives us access to the persistentContainer
+    let managedContext = appDelegate.persistentContainer.viewContext
+    ////which gives us acceess to managedcontex
+    detailItem?.setValue(switchValueBool, forKey: "isCompleted")
+    ////taking item and setting it to what its toggled too
+    do {
+      ///attempt to save 
+      try managedContext.save()
+    } catch {
+      print("error updating switchPressed")
+    }
+    
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+
+    completedSwitch.isOn = (detailItem?.isCompleted)!
+    
     configureView()
   }
 

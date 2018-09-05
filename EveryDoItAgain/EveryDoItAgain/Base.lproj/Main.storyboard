@@ -36,14 +36,14 @@
                         <subviews>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
                                 <rect key="frame" x="20" y="300.5" width="335" height="67"/>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="num" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFT-0D-IHy">
                                 <rect key="frame" x="154" y="250.5" width="67" height="33.5"/>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,16 +55,35 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCl-Ub-rvJ">
+                                <rect key="frame" x="87" y="407.5" width="201" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Od2-AE-jvg">
+                                <rect key="frame" x="163" y="462.5" width="51" height="31"/>
+                                <color key="tintColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="switchPressed:" destination="JEX-9P-axG" eventType="valueChanged" id="a3a-Lj-l8c"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="uFT-0D-IHy" secondAttribute="bottom" constant="16.5" id="15S-n4-UWN"/>
+                            <constraint firstItem="Od2-AE-jvg" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="364-4Z-v3E"/>
                             <constraint firstItem="ITO-90-NMs" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="20" id="5T5-BI-Vz8"/>
+                            <constraint firstItem="Od2-AE-jvg" firstAttribute="top" secondItem="iCl-Ub-rvJ" secondAttribute="bottom" constant="20" id="BkW-rm-rkZ"/>
                             <constraint firstItem="uFT-0D-IHy" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="154" id="Hcv-or-jfr"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="ITO-90-NMs" secondAttribute="trailing" constant="20" id="J4P-p5-tki"/>
+                            <constraint firstItem="iCl-Ub-rvJ" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="40" id="MBX-16-PcS"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
                             <constraint firstItem="uFT-0D-IHy" firstAttribute="top" secondItem="ITO-90-NMs" secondAttribute="bottom" constant="61" id="bAi-0C-4ql"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="iCl-Ub-rvJ" secondAttribute="trailing" constant="87" id="l48-W6-NuK"/>
+                            <constraint firstItem="iCl-Ub-rvJ" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="87" id="mPp-J1-cLH"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="uFT-0D-IHy" secondAttribute="trailing" constant="154" id="rHk-T8-CXM"/>
                             <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
                         </constraints>
@@ -73,6 +92,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="completedSwitch" destination="Od2-AE-jvg" id="9vs-Eu-TV4"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="numLabel" destination="uFT-0D-IHy" id="3Nd-8Z-GKF"/>
                         <outlet property="titleLabel" destination="ITO-90-NMs" id="QhY-jK-j4t"/>
@@ -116,7 +136,7 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
                                             <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </label>
